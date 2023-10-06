@@ -10,6 +10,7 @@ import ContentWrapper from '../ContentWrapper';
 import Logo from './Logo';
 
 const Header = () => {
+	const navigateTo = useNavigate();
 	const [show, setShow] = useState('top');
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const [mobileMenu, setMobileMenu] = useState(false);
@@ -17,6 +18,15 @@ const Header = () => {
 	const [showSearch, setShowSearch] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	const searchQueryHandler = (event) => {
+		if (event.key === 'Enter' && query.length > 0) {
+			navigateTo(`/search/${query}`);
+			setTimeout(() => {
+				setShowSearch(false);
+			}, 1000);
+		}
+	};
 
 	const openSearchField = () => {
 		setMobileMenu(false);
@@ -43,7 +53,7 @@ const Header = () => {
 				</ul>
 
 				<div className='mobile-menu-items'>
-					<HiOutlineSearch />
+					<HiOutlineSearch onClick={openSearchField} />
 					{mobileMenu ? (
 						<VscChromeClose
 							onClick={() => setMobileMenu(false)}
@@ -53,6 +63,31 @@ const Header = () => {
 					)}
 				</div>
 			</ContentWrapper>
+			{showSearch && (
+				<div className='search-bar'>
+					<ContentWrapper>
+						<div className='search-input'>
+							<input
+								id=''
+								name=''
+								type='text'
+								onChange={(event) =>
+									setQuery(
+										event.target.value,
+									)
+								}
+								placeholder='Search for a movie or tv show...'
+								onKeyUp={searchQueryHandler}
+							/>
+							<VscChromeClose
+								onClick={() =>
+									setShowSearch(false)
+								}
+							/>
+						</div>
+					</ContentWrapper>
+				</div>
+			)}
 		</header>
 	);
 };

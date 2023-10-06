@@ -47,12 +47,16 @@ header {
 			}
 			svg {
 				font-size: 18px;
+				&:hover {
+					color: var(--gradient);
+				}
 			}
 			cursor: pointer;
 			&:hover {
 				background: var(--gradient);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
+				color: var(--black-lighter);
 			}
 		}
 	}
