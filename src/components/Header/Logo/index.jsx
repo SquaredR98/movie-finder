@@ -1,12 +1,12 @@
 import React from 'react';
-import { MdMovieFilter } from 'react-icons/md';
+import LogoIcon from '../../../assets/logo.svg';
 
 import './styles.scss';
 
 const Logo = () => {
 	return (
 		<div className='logo-container'>
-			<MdMovieFilter className='icon' />
+			<img src={LogoIcon} className='icon' />
 			<div className='title-container'>
 				<p className='logo-title'>Movie</p>
 				<p className='logo-sub-title'>FINDER</p>

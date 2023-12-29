@@ -3,15 +3,12 @@
 	align-items: center;
 	margin: 1rem auto;
 	.icon {
-		font-size: 3rem;
+		width: 4rem;
 		padding: 0.5rem;
-		background-image: var(--gradient);
-		color: white;
-		border-radius: 100%;
 		margin-right: 0.5rem;
 	}
 	.title-container {
-		font-weight: 900;
+		font-weight: 500;
 		.logo-title {
 			font-size: 2rem;
 			background: var(--gradient);
@@ -19,8 +16,9 @@
 			-webkit-text-fill-color: transparent;
 		}
 		.logo-sub-title {
-			font-size: 0.8rem;
-			letter-spacing: 0.6rem;
+			font-weight: 200;
+			font-size: 1rem;
+			letter-spacing: 0.35rem;
 			color: white;
 			margin: 0.1rem auto;
 		}
