@@ -7,11 +7,13 @@ import LoadMore from "./LoadMore";
 interface IExploreContentProps {
   type: string;
   searchParams: Record<string, any> | undefined;
+  genres: Record<string, string>[]
 }
 
 export default function ExploreContent({
   type,
   searchParams,
+  genres,
 }: IExploreContentProps) {
   type = type === "movies" ? "movie" : "tv";
   return (
@@ -23,7 +25,7 @@ export default function ExploreContent({
         <ExploreSelect type={type} />
       </div>
       <div className={`mt-8`}>
-        <InitialList type={type} filters={searchParams || {}} />
+        <InitialList type={type} filters={searchParams || {}} genres={genres} />
       </div>
     </div>
   );

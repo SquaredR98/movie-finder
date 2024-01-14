@@ -1,25 +1,26 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { fetchData } from '../../lib/utils';
+import React, { Fragment, useEffect, useState } from "react";
+import { fetchData } from "../../lib/utils";
 
 interface IGenresProps {
-  type: string;
+  type?: string;
   genreIds: number[];
+  genres: any;
 }
 
-export default function Genres({ type, genreIds }: IGenresProps) {
-  const [genres, setGenres] = useState<any>([])
-  
-  useEffect(() => {
-    async function fetchAndModifyGenres() {
-      const data = await fetchData(`/genre/${type}/list`);
-      console.log(data);
-    }
-    fetchAndModifyGenres();
-  }, [])
-  
+export default function Genres({ type, genreIds, genres }: IGenresProps) {
   return (
-    <div></div>
-  )
+    <Fragment>
+      {genreIds?.map((g: any) => {
+        console.log(g, genres[g]);
+        
+        return (
+          <div key={g} className="text-white bg-slate-900 py-1 px-4 font-extralight">
+            {genres[g]}
+          </div>
+        );
+      })}
+    </Fragment>
+  );
 }

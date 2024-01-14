@@ -12,13 +12,19 @@ interface ICustomCarouselProps {
   moviesData: any;
   setHoveredOnCard: any;
   hoveredOnCard: number;
+  type: string;
+  genres: Record<string, string>[]
 }
 
 export default function CustomCarousel({
   moviesData,
   setHoveredOnCard,
   hoveredOnCard,
+  type,
+  genres,
 }: ICustomCarouselProps) {
+  console.log(hoveredOnCard);
+  
   return (
     <Carousel className="my-8">
       <CarouselContent>
@@ -36,7 +42,8 @@ export default function CustomCarousel({
                 item={item}
                 href=""
                 animate={false}
-                type={item.media_type}
+                type={item.media_type || type}
+                genres={genres}
               />
             </CarouselItem>
           );

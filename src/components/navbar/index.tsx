@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Logo from "@/components/navbar/Logo";
 import { flexibleContainer } from "@/lib/utils";
 import MenuItems, { MenuItemsSmall } from "./MenuItems";
-import Input from "../input";
+import Input from "./NavbarInput";
 import SearchButton from "./SearchButton";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoIosCloseCircleOutline } from "react-icons/io";

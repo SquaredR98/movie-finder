@@ -9,6 +9,7 @@ import CarouselSelect from "./CarouselSelect";
 interface ICarouselSectionProps {
   title: string;
   selections: ISelection[];
+  genres: Record<string, string>[]
 }
 
 export interface ISelection {
@@ -19,6 +20,7 @@ export interface ISelection {
 export default function CarouselSection({
   title,
   selections,
+  genres,
 }: ICarouselSectionProps) {
   const [selection, setSelection] = useState(selections[0].key);
   const [moviesData, setMoviesData] = useState<any>({});
@@ -60,9 +62,11 @@ export default function CarouselSection({
         <CarouselSelect setSelection={setSelection} selections={selections} />
       </div>
       <CustomCarousel
+        type={selection}
         moviesData={moviesData}
         setHoveredOnCard={setHoveredOnCard}
         hoveredOnCard={hoveredOnCard}
+        genres={genres}
       />
     </div>
   );
