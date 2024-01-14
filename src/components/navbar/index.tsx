@@ -40,7 +40,7 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="bg-slate-800/30 py-2">
+    <nav className="bg-slate-800/70 py-2 fixed w-screen z-10">
       <div className={`${flexibleContainer} flex justify-between items-center`}>
         <Logo />
         {navItemsMapped}

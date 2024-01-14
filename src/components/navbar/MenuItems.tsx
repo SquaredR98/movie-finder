@@ -38,10 +38,10 @@ export function MenuItemsSmall() {
         animate="visible"
         exit="exit"
         transition={{ delay: 0, duration: 0.3, ease: "easeInOut" }}
-        className="absolute left-0 right-0 top-16 flex flex-col h-screen bg-slate-900/60 border-t pt-4"
+        className="absolute left-0 right-0 top-16 bottom-0 flex flex-col h-screen bg-slate-900/60 border-t pt-4"
       >
         {navItems.map(({ name, link }, idx) => (
-          <AnimatePresence>
+          <AnimatePresence key={idx}>
             <MotionLink
               variants={{
                 hidden: { opacity: 0, y: -20 },
@@ -76,6 +76,7 @@ export default function MenuItems({ showSearchInput }: IMenuItemsProps) {
   return !showSearchInput
     ? navItems.map(({ name, link }, idx) => (
         <MotionLink
+          key={idx}
           variants={{
             hidden: { opacity: 0 },
             visible: { opacity: 1 },
