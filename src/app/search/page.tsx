@@ -19,7 +19,6 @@ export default async function SearchResult({
 }: ISearchResultsProps) {
   const data = await fetchSearchedQuery(searchParams.query);
   const genres = await fetchGenres();
-  console.log(data);
   
   return (
     <div className={`${flexibleContainer} pt-16`}>

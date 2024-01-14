@@ -6,9 +6,10 @@ import MovieCard from "../../components/movie-card";
 
 interface ILoadMoreProps {
   type: string;
+  genres: any;
 }
 
-export default function LoadMore({ type }: ILoadMoreProps) {
+export default function LoadMore({ type, genres }: ILoadMoreProps) {
   const [data, setData] = useState<any>([]);
   const { ref, inView } = useInView();
   let page = 2;
@@ -26,7 +27,16 @@ export default function LoadMore({ type }: ILoadMoreProps) {
   return (
     <Fragment>
       {data?.results?.map((item: any, idx: number) => {
-        return <MovieCard item={item} index={idx} href="" animate={true} type={type} />;
+        return (
+          <MovieCard
+            item={item}
+            index={idx}
+            href=""
+            animate={true}
+            type={type}
+            genres={genres}
+          />
+        );
       })}
       <div ref={ref}>
         <svg

@@ -7,13 +7,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import MovieCard from "@/components/movie-card";
+import Skeleton from "../../components/skeleton";
 
 interface ICustomCarouselProps {
   moviesData: any;
   setHoveredOnCard: any;
   hoveredOnCard: number;
   type: string;
-  genres: Record<string, string>[]
+  genres: Record<string, string>[];
 }
 
 export default function CustomCarousel({
@@ -23,34 +24,47 @@ export default function CustomCarousel({
   type,
   genres,
 }: ICustomCarouselProps) {
-  console.log(hoveredOnCard);
-  
   return (
     <Carousel className="my-8">
-      <CarouselContent>
-        {moviesData?.results?.map((item: any, index: number) => {
-          return (
-            <CarouselItem
-              key={index}
-              className="md:basis-1/3 lg:basis-1/5"
-              onMouseEnter={() => setHoveredOnCard(index)}
-              onMouseLeave={() => setHoveredOnCard(-1)}
-            >
-              <MovieCard
-                hoveredOnCard={hoveredOnCard}
-                index={index}
-                item={item}
-                href=""
-                animate={false}
-                type={item.media_type || type}
-                genres={genres}
-              />
-            </CarouselItem>
-          );
-        })}
-      </CarouselContent>
-      <CarouselPrevious className="hidden md:block" />
-      <CarouselNext className="hidden md:block" />
+      {moviesData ? (
+        <CarouselContent>
+          {moviesData?.results?.map((item: any, index: number) => {
+            return (
+              <CarouselItem
+                key={index}
+                className="basis-1/2 md:basis-1/3 lg:basis-1/5"
+                onMouseEnter={() => setHoveredOnCard(index)}
+                onMouseLeave={() => setHoveredOnCard(-1)}
+              >
+                <MovieCard
+                  hoveredOnCard={hoveredOnCard}
+                  index={index}
+                  item={item}
+                  href=""
+                  animate={false}
+                  type={item.media_type || type}
+                  genres={genres}
+                />
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+      ) : (
+        <CarouselContent>
+          {Array({ length: 5 }).map((_, index: number) => {
+            return (
+              <CarouselItem
+                key={index}
+                className="basis-1/2 md:basis-1/3 lg:basis-1/5"
+              >
+                <Skeleton />
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+      )}
+      {moviesData && <CarouselPrevious className="hidden md:flex" />}
+      {moviesData && <CarouselNext className="hidden md:flex" />}
     </Carousel>
   );
 }

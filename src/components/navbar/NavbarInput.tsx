@@ -7,7 +7,7 @@ interface IInputProps {
   showSearchInput: boolean;
 }
 
-function submitForm(data: FormData) {
+export function submitForm(data: FormData) {
   const value = data.get('search-input')
   redirect(`/search?query=${value}&page=${1}`);
 }

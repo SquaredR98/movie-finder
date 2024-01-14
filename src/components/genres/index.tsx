@@ -13,7 +13,6 @@ export default function Genres({ type, genreIds, genres }: IGenresProps) {
   return (
     <Fragment>
       {genreIds?.map((g: any) => {
-        console.log(g, genres[g]);
         
         return (
           <div key={g} className="text-white bg-slate-900 py-1 px-4 font-extralight">

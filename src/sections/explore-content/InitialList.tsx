@@ -26,7 +26,7 @@ export default async function InitialList({
       {data?.results?.map((item: any, idx: number) => {
         return <MovieCard item={item} index={idx} href="" animate={true} type={type} genres={genres} />;
       })}
-      <LoadMore type={type} />
+      <LoadMore type={type} genres={genres} />
     </div>
   );
 }
