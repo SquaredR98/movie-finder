@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    TOKEN: process.env.NEXT_PUBLIC_TOKEN
+  }
 }
 
 module.exports = nextConfig
