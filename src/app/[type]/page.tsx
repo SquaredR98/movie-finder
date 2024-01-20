@@ -1,7 +1,6 @@
 import React from "react";
-import { flexibleContainer } from "@/lib/utils";
+import { fetchGenres, flexibleContainer } from "@/lib/utils";
 import ExploreContent from "../../sections/explore-content";
-import { fetchGenres } from "../page";
 
 interface IExploreMoviePageProps {
   params: { type: string };

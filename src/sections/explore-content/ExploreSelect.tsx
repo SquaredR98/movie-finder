@@ -45,7 +45,7 @@ export default function ExploreSelect({ type }: IExploreSelectProps) {
       setGenres(data.genres);
     }
     fetchGenres();
-  }, []);
+  }, [type]);
 
   function handleOnValueChange(value: string | number) {
     if (value === "clear") {

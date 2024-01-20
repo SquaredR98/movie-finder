@@ -12,6 +12,7 @@ export default function SearchResults({ data, genres }: ISearchResultsProps) {
       {data?.results?.map((item: any, idx: number) => {
         return (
           <MovieCard
+            key={idx}
             item={item}
             index={idx}
             href=""

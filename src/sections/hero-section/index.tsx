@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { fetchData } from "../../lib/utils";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
-import { fetchSearchedQuery } from "../../app/search/page";
 import { submitForm } from "../../components/navbar/NavbarInput";
 
 export default function HeroSection() {

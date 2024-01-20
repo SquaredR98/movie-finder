@@ -23,12 +23,13 @@ export default function LoadMore({ type, genres }: ILoadMoreProps) {
       };
       fetchNextData();
     }
-  }, [inView, data]);
+  }, [inView, data, page, type]);
   return (
     <Fragment>
       {data?.results?.map((item: any, idx: number) => {
         return (
           <MovieCard
+            key={idx}
             item={item}
             index={idx}
             href=""

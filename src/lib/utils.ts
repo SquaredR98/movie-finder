@@ -10,8 +10,8 @@ export function cn(...inputs: ClassValue[]) {
 
 
 export async function fetchData(url: string, params?: any) {
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOTU3MGI0MzAzNTQ1NzU2MDFlODI4YjkxNWQ4ZDFkZSIsInN1YiI6IjY0ZGM3NDcwNTllOGE5MDBmZmZlNzUyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4CRz2julUWr0ZQxwYlX2fX_bGAuk5OWEDiBiYGP3Tzo";
+  const token = process.env.NEXT_PUBLIC_TOKEN;
+  
   const headers = {
     Authorization: "bearer " + token,
   };
@@ -25,6 +25,25 @@ export async function fetchData(url: string, params?: any) {
     console.log(err);
     return err;
   }
+}
+
+export async function fetchGenres() {
+  const types = ["movie", "tv"],
+    promises: any = [],
+    allGenres: any = {};
+  types.forEach((type) => promises.push(fetchData(`/genre/${type}/list`)));
+  const data = await Promise.all(promises);
+  
+  data.map(({ genres }: any) => {
+    genres.map((item: any) => (allGenres[item.id] = item.name));
+  });
+
+  return allGenres;
+}
+
+export async function fetchSearchedQuery(value: string) {
+  const data = fetchData(`/search/multi?query=${value}&page=${1}`);
+  return data;
 }
 
 export const flexibleContainer = `w-11/12 lg:w-10/12 mx-auto`;

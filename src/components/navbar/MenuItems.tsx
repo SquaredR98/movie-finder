@@ -17,7 +17,7 @@ const navItems = [
   },
   {
     name: "TV Shows",
-    link: "tv-shows",
+    link: "tv",
   },
 ];
 
