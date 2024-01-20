@@ -10,8 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 
 
 export async function fetchData(url: string, params?: any) {
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOTU3MGI0MzAzNTQ1NzU2MDFlODI4YjkxNWQ4ZDFkZSIsInN1YiI6IjY0ZGM3NDcwNTllOGE5MDBmZmZlNzUyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4CRz2julUWr0ZQxwYlX2fX_bGAuk5OWEDiBiYGP3Tzo";
+  const token = process.env.TOKEN;
   const headers = {
     Authorization: "bearer " + token,
   };
