@@ -10,11 +10,14 @@ export function cn(...inputs: ClassValue[]) {
 
 
 export async function fetchData(url: string, params?: any) {
-  const token = process.env.TOKEN;
+  const token = process.env.NEXT_PUBLIC_TOKEN;
+  
   const headers = {
     Authorization: "bearer " + token,
   };
   try {
+    console.log(headers);
+    
     const { data } = await axios.get(BASE_URL + url, {
       headers,
       params,
