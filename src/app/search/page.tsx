@@ -1,6 +1,5 @@
 import React from "react";
-import { fetchData, flexibleContainer, gradientText } from "../../lib/utils";
-import { fetchGenres } from "../page";
+import { fetchGenres, fetchSearchedQuery, flexibleContainer, gradientText } from "../../lib/utils";
 import SearchResults from "../../sections/search-results";
 
 interface ISearchResultsProps {
@@ -8,10 +7,7 @@ interface ISearchResultsProps {
   searchParams: any;
 }
 
-export async function fetchSearchedQuery(value: string) {
-  const data = fetchData(`/search/multi?query=${value}&page=${1}`);
-  return data;
-}
+
 
 export default async function SearchResult({
   params,
@@ -22,7 +18,7 @@ export default async function SearchResult({
   
   return (
     <div className={`${flexibleContainer} pt-16`}>
-      <h3 className={`mt-8 text-3xl ${gradientText} mb-8`}>Search Results for "{searchParams.query}"</h3>
+      <h3 className={`mt-8 text-3xl ${gradientText} mb-8`}>Search Results for &quot;{searchParams.query}&quot;</h3>
       <SearchResults data={data} genres={genres} />
     </div>
   );

@@ -24,7 +24,7 @@ export default async function InitialList({
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-8">
       {data?.results?.map((item: any, idx: number) => {
-        return <MovieCard item={item} index={idx} href="" animate={true} type={type} genres={genres} />;
+        return <MovieCard key={idx} item={item} index={idx} href="" animate={true} type={type} genres={genres} />;
       })}
       <LoadMore type={type} genres={genres} />
     </div>

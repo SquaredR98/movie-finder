@@ -1,12 +1,8 @@
-import { string } from "prop-types";
 import React, { Fragment } from "react";
 import { fetchData, flexibleContainer } from "../../../lib/utils";
 import Image from "next/image";
 import dayjs from "dayjs";
 import Genres from "../../../components/genres";
-import { fetchGenres } from "../../page";
-import { buildStyles } from "react-circular-progressbar";
-import { ClientCircularProgressBar } from "../../../components/motion-elements";
 import CircularRating from "../../../components/circular-progressbar";
 
 interface IMovieOrShowContentProps {
@@ -36,8 +32,6 @@ export default async function MovieOrShowContent({
   const data = await fetchMovieOrShowData(type, id);
   const { crew, cast } = await fetchCrew(type, id);
   const url = "https://image.tmdb.org/t/p/original";
-
-  console.log(crew);
 
   const director = crew?.filter((f: any) => f.job === "Director");
   const writer = crew?.filter(

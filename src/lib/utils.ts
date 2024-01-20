@@ -16,8 +16,6 @@ export async function fetchData(url: string, params?: any) {
     Authorization: "bearer " + token,
   };
   try {
-    console.log(headers);
-    
     const { data } = await axios.get(BASE_URL + url, {
       headers,
       params,
@@ -27,6 +25,25 @@ export async function fetchData(url: string, params?: any) {
     console.log(err);
     return err;
   }
+}
+
+export async function fetchGenres() {
+  const types = ["movie", "tv"],
+    promises: any = [],
+    allGenres: any = {};
+  types.forEach((type) => promises.push(fetchData(`/genre/${type}/list`)));
+  const data = await Promise.all(promises);
+  
+  data.map(({ genres }: any) => {
+    genres.map((item: any) => (allGenres[item.id] = item.name));
+  });
+
+  return allGenres;
+}
+
+export async function fetchSearchedQuery(value: string) {
+  const data = fetchData(`/search/multi?query=${value}&page=${1}`);
+  return data;
 }
 
 export const flexibleContainer = `w-11/12 lg:w-10/12 mx-auto`;

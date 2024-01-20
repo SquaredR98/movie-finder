@@ -1,6 +1,6 @@
 import HeroSection from "@/sections/hero-section";
 import CarouselSection from "../sections/carousel";
-import { fetchData } from "../lib/utils";
+import { fetchData, fetchGenres } from "../lib/utils";
 import Skeleton from "../components/skeleton";
 
 const daySelection = [
@@ -23,20 +23,6 @@ const movieSelection = [
     key: "tv",
   },
 ];
-
-export async function fetchGenres() {
-  const types = ["movie", "tv"],
-    promises: any = [],
-    allGenres: any = {};
-  types.forEach((type) => promises.push(fetchData(`/genre/${type}/list`)));
-  const data = await Promise.all(promises);
-  
-  data.map(({ genres }: any) => {
-    genres.map((item: any) => (allGenres[item.id] = item.name));
-  });
-
-  return allGenres;
-}
 
 export default async function Home() {
   const genres = await fetchGenres();
