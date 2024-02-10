@@ -23,52 +23,49 @@ const navItems = [
 
 export function MenuItemsSmall() {
   return (
-    <AnimatePresence>
-      <MotionDiv
-        variants={{
-          hidden: { height: 0, opacity: 0 },
-          visible: { height: "100%", opacity: 1 },
-          exit: {
-            opacity: 0,
-            height: 0,
-            transition: { duration: 0.3, ease: "easeInOut" },
-          },
-        }}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        transition={{ delay: 0, duration: 0.3, ease: "easeInOut" }}
-        className="absolute left-0 right-0 top-16 bottom-0 flex flex-col h-screen bg-slate-900/60 border-t pt-4"
-      >
-        {navItems.map(({ name, link }, idx) => (
-          <AnimatePresence key={idx}>
-            <MotionLink
-              variants={{
-                hidden: { opacity: 0, y: -20 },
-                visible: { opacity: 1, y: 0 },
-                exit: {
-                  opacity: 0,
-                  y: -20,
-                  transition: { duration: 0.3, ease: "easeInOut" },
-                },
-              }}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{
-                delay: idx * 0.5 + 0.5,
-                duration: 0.3,
-                ease: "easeInOut",
-              }}
-              href={link}
-              className={`md:hidden py-2 px-8 bg-white ${clipTextEffect} font-bold text-xl ${textHoverGradient} transition-all duration-500`}
-            >
-              {name}
-            </MotionLink>
-          </AnimatePresence>
-        ))}
-      </MotionDiv>
-    </AnimatePresence>
+    <MotionDiv
+      variants={{
+        hidden: { height: 0, opacity: 0 },
+        visible: { height: "100vh", opacity: 1 },
+        exit: {
+          opacity: 0,
+          height: 0,
+          transition: { duration: 0.3, ease: "easeInOut" },
+        },
+      }}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      transition={{ delay: 0, duration: 0.3, ease: "easeInOut" }}
+      className="absolute left-0 right-0 top-16 bottom-0 flex flex-col h-screen bg-slate-900/70 backdrop-blur-lg border-t pt-4"
+    >
+      {navItems.map(({ name, link }, idx) => (
+        <AnimatePresence key={idx}>
+          <MotionLink
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+              exit: {
+                opacity: 0,
+                transition: { duration: 0.1, ease: "easeInOut" },
+              },
+            }}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{
+              delay: idx * 0.5 + 0.5,
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+            href={link}
+            className={`md:hidden py-2 px-8 bg-white ${clipTextEffect} font-bold text-xl ${textHoverGradient} transition-all duration-500`}
+          >
+            {name}
+          </MotionLink>
+        </AnimatePresence>
+      ))}
+    </MotionDiv>
   );
 }
 

@@ -8,6 +8,7 @@ import Input from "./NavbarInput";
 import SearchButton from "./SearchButton";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [showSearchInput, setShowSearchInput] = useState(false);
@@ -35,7 +36,7 @@ export default function Navbar() {
           />
         )
       ) : null}
-      {showMenu && <MenuItemsSmall />}
+      <AnimatePresence>{showMenu && <MenuItemsSmall />}</AnimatePresence>
     </div>
   );
 

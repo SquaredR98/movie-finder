@@ -44,7 +44,7 @@ export default function MovieCard({
       transition={{ delay: index * 0.25, duration: 0.5, ease: "easeInOut" }}
       href={`/${item.media_type || type}/${item.id}`}
     >
-      <Card className="h-[320px] rounded-none border-none">
+      <Card className="h-[320px] rounded-md border-none">
         <CardContent className="flex items-center justify-center relative h-[100%]">
           <Image
             src={posterUrl}
@@ -86,12 +86,12 @@ export default function MovieCard({
               </div>
             </MotionDiv>
           )}
-          <div className="md:hidden absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-slate-950/0 to-slate-950">
+          <div className="md:hidden absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-slate-950/0 to-slate-950 px-2">
             <div className="h-[100%] flex flex-col items-start justify-end">
               <h1 className={`text-xl font-bold ${gradientText} no-wrap`}>
                 {item.name || item.title}
               </h1>
-              <div className="flex gap-2 flex-wrap justify-center mt-2">
+              <div className="flex gap-2 flex-wrap mt-2">
                 <Genres
                   type={type}
                   genreIds={item?.genre_ids}
@@ -101,7 +101,7 @@ export default function MovieCard({
             </div>
           </div>
           {!(hoveredOnCard === index) && (
-            <div className="absolute z-0 w-12 h-12 bottom-4 right-4 bg-slate-900 rounded-full">
+            <div className="absolute z-0 w-8 h-8 md:w-12 md:h-12 top-2 border-2 border-slate-950 md:bottom-4 right-4 bg-slate-900 rounded-full">
               <CircularRating data={item} />
             </div>
           )}

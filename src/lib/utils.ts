@@ -8,10 +8,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-console.log(process.env);
-
-
-
 export async function fetchData(url: string, params?: any) {
   const token = process.env.NEXT_PUBLIC_TOKEN;
   
@@ -25,7 +21,6 @@ export async function fetchData(url: string, params?: any) {
     });
     return data;
   } catch (err) {
-    console.log(err);
     return err;
   }
 }

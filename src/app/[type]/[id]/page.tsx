@@ -48,7 +48,7 @@ export default async function MovieOrShowContent({
         className="opacity-10 absolute top-0 left-0 right-0 -z-[1] object-cover"
       />
       <div className={`${flexibleContainer} pt-16`}>
-        <div className="grid grid-cols-3 gap-8 my-8">
+        <div className="grid md:grid-cols-3 gap-8 my-8">
           <div className="h-96">
             <Image
               src={url + data?.poster_path}
@@ -58,8 +58,8 @@ export default async function MovieOrShowContent({
               className="h-[500px] w-full object-cover"
             />
           </div>
-          <div className="col-span-2">
-            <h2 className="text-white text-5xl font-bold">
+          <div className="md:col-span-2">
+            <h2 className="text-white text-5xl font-bold mt-16 sm:mt-28 md:mt-0">
               {data?.name || data?.title} (
               {dayjs(data?.release_date).format("YYYY")})
             </h2>
