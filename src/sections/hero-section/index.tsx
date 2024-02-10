@@ -35,8 +35,8 @@ export default function HeroSection() {
       )}
       <div className="bg-gradient-to-b from-slate-950/0 to-slate-950 h-[250px] absolute bottom-0 left-0 w-full -z-10" />
       <div className="flex flex-col justify-center items-center h-full">
-        <h1 className="text-8xl text-white font-bold tracking-wider">Welcome</h1>
-        <p className="text-2xl text-white mb-8">Millions of movies, TV shows and people to discover. Explore now.</p>
+        <h1 className="text-5xl md:text-8xl text-white font-bold tracking-wider">Welcome</h1>
+        <p className="text-base md:text-2xl text-white mb-8 px-8 text-center mt-4">Millions of movies, TV shows and people to discover. Explore now.</p>
         <form
           action={submitForm}
           className="w-11/12 md:w-2/3 lg:w-1/2 flex items-center h-16"

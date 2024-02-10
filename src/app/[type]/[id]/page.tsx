@@ -55,7 +55,7 @@ export default async function MovieOrShowContent({
               height={1000}
               width={800}
               alt="movie poster"
-              className="h-[500px] w-full object-cover"
+              className="h-[500px] w-full object-contain md:object-cover"
             />
           </div>
           <div className="md:col-span-2">
